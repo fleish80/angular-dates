@@ -6,12 +6,12 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'user'
+    redirectTo: 'intl-date-time-format'
   },
   {
     path: 'intl-date-time-format',
     loadComponent: () => import('./app/intl-date-time-format.component').then(c => c.IntlDateTimeFormatComponent),
-    title: 'User',
+    title: 'Intl Date Time Format',
   },
 ];
 
