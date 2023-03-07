@@ -1,7 +1,21 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {bootstrapApplication} from '@angular/platform-browser';
+import {AppComponent} from './app/app.component';
+import {provideRouter, Route} from '@angular/router';
 
-import { AppModule } from './app/app.module';
+export const appRoutes: Route[] = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'user'
+  },
+  {
+    path: 'intl-date-time-format',
+    loadComponent: () => import('./app/intl-date-time-format.component').then(c => c.IntlDateTimeFormatComponent),
+    title: 'User',
+  },
+];
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(appRoutes)]
+}).catch((err) => console.error(err));
