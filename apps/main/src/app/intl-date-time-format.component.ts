@@ -9,7 +9,9 @@ import {JsonPipe, NgForOf} from '@angular/common';
 export type DateFormat =
   'fullTz' | // Wednesday, Jun 15 2022, 12:41 PM (Asia/Jerusalem)
   'full' | // Wednesday, Jun 15 2022, 12:41 PM
-  'monthYearTimeTz' | // Jun 15 2022, 12:46 PM (Asia/Jerusalem)
+  'monthYearTimeLongGenericTz' | 'monthYearTimeShortGenericTz' |
+  'monthYearTimeLongTz' | 'monthYearTimeShortTz' |
+  'monthYearTimeLongOffsetTz' | 'monthYearTimeShortOffsetTz' |
   'monthYearTime' | // Jun 15 2022, 12:46 PM
   'weekMonth' | // Wednesday, Jun 15
   'month' | //  Jun 15
@@ -44,13 +46,53 @@ const predefinedFormats: Record<DateFormat, Intl.DateTimeFormatOptions> = {
     hour: '2-digit',
     minute: '2-digit'
   },
-  monthYearTimeTz: {
+  monthYearTimeLongGenericTz: {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'longGeneric'
+  },
+  monthYearTimeShortGenericTz: {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'shortGeneric'
+  },
+  monthYearTimeLongTz: {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'long'
+  },
+  monthYearTimeShortTz: {
     month: 'short',
     day: '2-digit',
     year: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
     timeZoneName: 'short'
+  },
+  monthYearTimeShortOffsetTz: {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'shortOffset'
+  },
+  monthYearTimeLongOffsetTz: {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'longOffset'
   },
   monthYearTime: {
     month: 'short',
@@ -85,7 +127,12 @@ const predefinedFormats: Record<DateFormat, Intl.DateTimeFormatOptions> = {
       <option value="full">full</option>
       <option value="fullTz">fullTz</option>
       <option value="timeTz">timeTz</option>
-      <option value="monthYearTimeTz">monthYearTimeTz</option>
+      <option value="monthYearTimeLongGenericTz">monthYearTimeLongGenericTz</option>
+      <option value="monthYearTimeShortGenericTz">monthYearTimeShortGenericTz</option>
+      <option value="monthYearTimeLongTz">monthYearTimeLongTz</option>
+      <option value="monthYearTimeShortTz">monthYearTimeShortTz</option>
+      <option value="monthYearTimeLongOffsetTz">monthYearTimeLongOffsetTz</option>
+      <option value="monthYearTimeShortOffsetTz">monthYearTimeShortOffsetTz</option>
       <option value="monthYearTime">monthYearTime</option>
       <option value="weekMonth">weekMonth</option>
     </select>
